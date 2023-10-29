@@ -1,4 +1,4 @@
-# Учебный проект парсинга документов PEP — Python Enhancement Proposal (предложений по улучшению Python)
+# Учебный проект парсинга документов PEP — Python Enhancement Proposal (предложений по улучшению Python) PEP_parse на базе фреймворка Scrapy
 
 ### Разработчик (исполнитель):
 
