@@ -1,4 +1,4 @@
-""" Модуль items для проекта pep_parse."""
+""" Модуль items фреймворка Scrapy для проекта pep_parse."""
 
 
 import scrapy

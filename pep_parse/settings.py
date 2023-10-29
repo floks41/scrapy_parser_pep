@@ -1,4 +1,4 @@
-""" Модуль настроек для проекта pep_parse."""
+""" Модуль настроек Scrapy для проекта pep_parse."""
 
 
 from pep_parse.constants import RESULTS_DIR_NAME

@@ -1,4 +1,4 @@
-""" Модуль паука pep для проекта pep_parse."""
+""" Модуль паука pep Scrapy для проекта pep_parse."""
 
 
 import scrapy
