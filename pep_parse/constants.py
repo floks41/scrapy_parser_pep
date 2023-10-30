@@ -19,7 +19,7 @@ EXPECTED_STATUSES_LIST = (
 )
 
 RESULTS_DIR_NAME = 'results'
-# Каталог для сохранение результатов работы пайплайна PepParsePipeline
+# Каталог для сохранения результатов работы пайплайна PepParsePipeline
 BASE_DIR = Path(__file__).absolute().parent.parent / RESULTS_DIR_NAME
 # Заголовки для таблицы результатов работы пайплайна PepParsePipeline
 STATUS_SUMMURY_HEADER = (

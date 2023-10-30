@@ -24,7 +24,6 @@ class PepParsePipeline:
     def process_item(self, item, spider):
         """При обработке item c информацие о документе pep,
         заполняет частотный словарь."""
-
         current_status = item.get('status')
         if current_status not in EXPECTED_STATUSES_LIST:
             current_status = UNKNOWN_STATUS_NAME
@@ -38,7 +37,6 @@ class PepParsePipeline:
 
     def close_spider(self, spider):
         """По окончании работы паука сохраныет результаты подсчета в файл."""
-
         # Подсчет и формирование таблицы с результатами подсчета.
         total_peps_number = 0
         results = [

@@ -8,7 +8,6 @@ from pep_parse.items import PepParseItem
 
 class PepSpider(scrapy.Spider):
     """Паук для парсинга информации о статусах документов PEP."""
-
     name = 'pep'
     allowed_domains = ['peps.python.org']
     start_urls = ['https://peps.python.org/']
@@ -33,7 +32,6 @@ class PepSpider(scrapy.Spider):
     def parse_pep(self, response, item):
         """Парсит информацию о статусе документа PEP
         со страницы конкретного документа."""
-
         pep_status = response.css(
             '#pep-content > dl > dt:contains("Status") + dd > abbr::text'
         ).get()

@@ -1,20 +1,30 @@
-"""Модуль middleware фреймворка scrapy для проекта pep_parse."""
+"""Модуль middleware фреймворка Scrapy для проекта pep_parse."""
 
 
 from scrapy import signals
 
 
-class PepParseSpiderMiddleware:
-    # Not all methods need to be defined. If a method is not defined,
-    # scrapy acts as if the spider middleware does not modify the
-    # passed objects.
+class PepParseAbstractMiddleware:
+    """Абстрактный класс для связующих кассов паука PepParse и загрузчика."""
 
     @classmethod
     def from_crawler(cls, crawler):
-        # This method is used by Scrapy to create your spiders.
-        s = cls()
-        crawler.signals.connect(s.spider_opened, signal=signals.spider_opened)
-        return s
+        """Точка входа в связующий класс при создании паука,
+        для работы с экземпляром crawler`a"""
+        spider_middleware_object = cls()
+        crawler.signals.connect(
+            spider_middleware_object.spider_opened,
+            signal=signals.spider_opened,
+        )
+        return spider_middleware_object
+
+    def spider_opened(self, spider):
+        """Выполняется при успешном запуске паука."""
+        spider.logger.info('Spider opened: %s' % spider.name)
+
+
+class PepParseSpiderMiddleware(PepParseAbstractMiddleware):
+    """Связующий класс фрейворка Scrapy для паука PepParse."""
 
     def process_spider_input(self, response, spider):
         # Called for each response that goes through the spider
@@ -47,21 +57,9 @@ class PepParseSpiderMiddleware:
         for r in start_requests:
             yield r
 
-    def spider_opened(self, spider):
-        spider.logger.info('Spider opened: %s' % spider.name)
 
-
-class PepParseDownloaderMiddleware:
-    # Not all methods need to be defined. If a method is not defined,
-    # scrapy acts as if the downloader middleware does not modify the
-    # passed objects.
-
-    @classmethod
-    def from_crawler(cls, crawler):
-        # This method is used by Scrapy to create your spiders.
-        s = cls()
-        crawler.signals.connect(s.spider_opened, signal=signals.spider_opened)
-        return s
+class PepParseDownloaderMiddleware(PepParseAbstractMiddleware):
+    """Связующий класс фрейворка Scrapy для загрузчика паука PepParse."""
 
     def process_request(self, request, spider):
         # Called for each request that goes through the downloader
@@ -93,6 +91,3 @@ class PepParseDownloaderMiddleware:
         # - return a Response object: stops process_exception() chain
         # - return a Request object: stops process_exception() chain
         pass
-
-    def spider_opened(self, spider):
-        spider.logger.info('Spider opened: %s' % spider.name)

@@ -6,7 +6,6 @@ import scrapy
 
 class PepParseItem(scrapy.Item):
     """Класс item для паука PepSpider."""
-
     number = scrapy.Field()
     name = scrapy.Field()
     status = scrapy.Field()
